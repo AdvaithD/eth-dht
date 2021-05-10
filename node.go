@@ -1,4 +1,4 @@
-
+package node
 
 import "encoding/hex"
 
@@ -54,4 +54,35 @@ func (node NodeID) Xor(other NodeID) (ret NodeID) {
 	return
 }
 
+// TODO: document this breh
+func (node NodeID) PrefixLen() (ret int) {
+	for i :=; i < IdLength; i++ {
+		for j := 0; j < 8; j++ {
+			if (node[i] >> uint8(7 - j)) & 0x1 != 0 {
+			return i * 8 + j
+		}
+	}
+}
+ return IdLength * 8 - 1
+}
 
+// start defining the routing table
+
+const BucketSize = 20
+
+type Contact struct {
+	id NodeID
+}
+
+type RoutingTable struct {
+	node NodeID
+	buckets [IdLength*8]*list.List
+}
+
+func NewRoutingTable(node NodeID) (ret RotingTable) {
+	for i := 0; i < IdLength * 8; i++ {
+		ret.buckets[i] = list.New()
+	}
+	ret.node = node
+	return
+}
