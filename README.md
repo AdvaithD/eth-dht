@@ -34,4 +34,15 @@ Basiclaly building a DHT from scratch, and having it be standalone for now.
 Major WIP, but I will get this done. Word is bond.
 
 - [ ] Golang module, need to write a repl if I can
-s
+```
+
+
+DHT:
+- A Distributed Hash Table is a P2P networking primitive that, in its most basic formulation, permits storage and lookup of key, value pairs.
+- Its a hash table spread across many nodes.
+- Kademlia is a good example because its pretty simple
+- Internal state is also simple
+- Kademlia makes tradeoffs (vs. Pastry Chord), its not practical to implement pubsub.
+- [Read More - Kademlia detailed spec](http://xlattice.sourceforge.net/components/protocol/kademlia/specs.html)
+
+Note: Node ID's are very important in DHT's. Here its a 160 bil opaque identifier, used to identify nodes on the network, as well as content hashes.
