@@ -86,3 +86,17 @@ func NewRoutingTable(node NodeID) (ret RotingTable) {
 	ret.node = node
 	return
 }
+
+func (table *RoutingTable) Update(contact *Contact) {
+	prefix_length := contact.id.Xor(table.node.id).PrefixLen()
+	bucket := table.buckets[prefix_length]
+	element := iterable.Find(bucket, func(x interface{}) bool {
+	return x.(*Contact).id.Equals(table.node.id)
+})
+if element == nil {
+if bucket.Len() <= BucketSize {
+bucket.PushFront(contact)
+}
+}
+
+}
