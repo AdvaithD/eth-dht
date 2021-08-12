@@ -1,6 +1,8 @@
+package node
 
-
-import "encoding/hex"
+import (
+    "encoding/hex"
+)
 
 const IdLength = 20
 
